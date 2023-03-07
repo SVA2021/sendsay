@@ -1,0 +1,17 @@
+.screen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 4px 8px;
+  color: var(--screenValue);
+  background: var(--screenBg);
+  border-radius: 6px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: right;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

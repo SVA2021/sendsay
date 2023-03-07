@@ -1,0 +1,22 @@
+.calcButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+  text-align: center;
+
+  &:hover {
+    border: 2px solid var(--violet);
+    cursor: pointer;
+  }
+}
