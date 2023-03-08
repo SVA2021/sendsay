@@ -1,0 +1,33 @@
+.layout {
+  // width: 695px;
+  // height: 640px;
+  display: grid;
+  grid-template-areas:
+    "empty header"
+    "initial result";
+  background-color: yellow;
+  grid-template-columns: 240px 240px;
+  grid-template-rows: 38px 448px;
+  gap: 30px 56px;
+
+}
+
+.empty {
+  grid-area: empty;
+}
+
+.header {
+
+  grid-area: header;
+  background-color: blueviolet;
+}
+
+.initial {
+  grid-area: initial;
+  background-color: green;
+}
+
+.result {
+  grid-area: result;
+  background-color: red;
+}

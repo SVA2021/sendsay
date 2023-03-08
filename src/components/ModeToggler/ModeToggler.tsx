@@ -15,7 +15,7 @@ export const ModeToggler: FC<ModeTogglerProps> = ({mode, clickHandler}) => {
     <div className={s.toggler} >
       {MODE_TYPES.map((item) => {
         return (
-          <div
+          <div key={item}
             className={classNames(s.toggler__item, mode === item ? s.toggler__item__active : '')}
             onClick={() => clickHandler(item)}
           >

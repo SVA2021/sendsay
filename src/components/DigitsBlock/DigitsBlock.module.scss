@@ -1,0 +1,11 @@
+.digits {
+  display: grid;
+  grid-template-areas:
+    "d7 d8 d9"
+    "d4 d5 d6"
+    "d1 d2 d3"
+    "zero zero comma";
+  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}

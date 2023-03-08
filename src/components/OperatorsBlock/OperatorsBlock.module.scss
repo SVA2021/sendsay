@@ -1,0 +1,6 @@
+.operators {
+  display: grid;
+  grid-template-areas: "div multi minus plus";
+  gap: 8px;
+  grid-template-columns: repeat(4, 1fr);
+}
