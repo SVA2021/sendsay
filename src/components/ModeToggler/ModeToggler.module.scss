@@ -1,0 +1,42 @@
+.toggler {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px;
+  height: 38px;
+  background: var(--screenBg);
+  border-radius: 6px;
+}
+
+.toggler__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--toggle);
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 8px 12px;
+  text-transform: capitalize;
+  border: 1px solid transparent;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--toggle);
+  }
+}
+
+.toggler__item__active {
+
+  background-color: #fff;
+  border: 1px solid var(--border);
+
+  svg {
+    stroke: var(--violet);
+  }
+}
