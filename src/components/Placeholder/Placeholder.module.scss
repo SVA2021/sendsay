@@ -1,0 +1,35 @@
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #C4C4C4;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.placeholder__icon {
+  svg {
+    width: 20px;
+    height: 20px;
+    stroke: #000;
+  }
+}
+
+.placeholder__title {
+  margin-top: 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--violet);
+}
+
+.placeholder__text {
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #6B7280;
+}
