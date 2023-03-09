@@ -1,4 +1,4 @@
-import {calculatorPartT, digitT, operatorT} from "./types";
+import {digitT, operatorT} from "./types";
 
 export function getOperatorName(sign: operatorT): string {
   switch (sign) {
@@ -10,9 +10,6 @@ export function getOperatorName(sign: operatorT): string {
       return 'minus';
     case 'x':
       return 'multi';
-
-    default:
-      return '';
   }
 }
 
