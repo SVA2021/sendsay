@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
+import {CalcButton} from '..';
 import {OPERATORS, operatorT} from '../../types';
 import {getOperatorName} from '../../utils';
-import {CalcButton} from '../CalcButton/CalcButton';
 import s from './OperatorsBlock.module.scss';
 
 export type OperatorsBlockPropsT = {
@@ -12,8 +12,8 @@ export const OperatorsBlock: FC<OperatorsBlockPropsT> = ({clickHandler}) => {
   return (
     <div className={s.operators} >
       {
-        OPERATORS.map((item) =>
-          <CalcButton value={item} key={item} clickHandler={clickHandler} style={getOperatorName(item)} />
+        OPERATORS.map((item, index) =>
+          <CalcButton value={item} key={index} clickHandler={clickHandler} style={getOperatorName(item)} />
         )
       }
     </div>
