@@ -1,13 +1,12 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
+import {useAppSelector} from '../../app/hooks';
+import {selectScreen} from '../../features/calculator/calculatorSlice';
 import s from './Screen.module.scss';
 
-export type ScreenPropsT = {
-  value: string
-}
-
-export const Screen : FC<ScreenPropsT> = ({value}) => {
+export const Screen: FC = () => {
+  const value = useAppSelector(selectScreen);
   return (
-    <div className={s.screen} > 
+    <div className={s.screen} >
       {value}
     </div>
   );
