@@ -6,3 +6,5 @@ export * from './ModeToggler/ModeToggler';
 export * from './OperatorsBlock/OperatorsBlock';
 export * from './Placeholder/Placeholder';
 export * from './DigitsBlock/DigitsBlock';
+export * from './InitialCalc/InitialCalc';
+export * from './ResultCalc/ResultCalc';
