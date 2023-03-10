@@ -13,7 +13,7 @@ export const DigitsBlock: FC<DigitsBlockPropsT> = ({clickHandler}) => {
     <div className={s.digits} >
       {
         DIGITS.map((item) =>
-          <CalcButton value={item} key={item} clickHandler={clickHandler} style={getDigitName(item)} />
+          <CalcButton value={item} key={item} clickHandler={clickHandler} gridAreaName={getDigitName(item)} />
         )
       }
     </div>

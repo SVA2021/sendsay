@@ -13,7 +13,7 @@ export const OperatorsBlock: FC<OperatorsBlockPropsT> = ({clickHandler}) => {
     <div className={s.operators} >
       {
         OPERATORS.map((item, index) =>
-          <CalcButton value={item} key={index} clickHandler={clickHandler} style={getOperatorName(item)} />
+          <CalcButton value={item} key={index} clickHandler={clickHandler} gridAreaName={getOperatorName(item)} />
         )
       }
     </div>
