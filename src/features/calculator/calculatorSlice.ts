@@ -5,14 +5,14 @@ import {addNumberToString, calculateResult} from '../../utils';
 import {digitT} from "./../../types";
 
 export type CalculatorState = {
-  screen: string
+  screen: number | null | undefined | 'Не определено'
   firstValue: string | null
   secondValue: string | null
   operator: operatorT | null
 }
 
 const initialState: CalculatorState = {
-  screen: '0',
+  screen: 0,
   firstValue: null,
   secondValue: null,
   operator: null,
@@ -24,20 +24,29 @@ export const calculatorSlice = createSlice({
   reducers: {
     setFirstValue: (state, action: PayloadAction<digitT>) => {
       state.firstValue = state.firstValue === null ? action.payload : addNumberToString(state.firstValue, action.payload);
-      state.screen = state.firstValue;
+      state.screen = +state.firstValue;
     },
     setSecondValue: (state, action: PayloadAction<digitT>) => {
       state.secondValue = state.secondValue === null ? action.payload : addNumberToString(state.secondValue, action.payload);
-      state.screen = state.secondValue;
+      state.screen = +state.secondValue;
     },
     setOperator: (state, action: PayloadAction<operatorT | null>) => {
+      if (!state.firstValue && state.screen === 'Не определено') {
+        state.firstValue = null;
+        state.secondValue = null;
+        state.operator = null;
+        state.screen = 0;
+      }
+      if (!state.firstValue && typeof (state.screen) === 'number') {
+        state.firstValue = String(state.screen);
+      }
       state.operator = action.payload;
     },
     setInitial: (state) => {
       state.firstValue = null;
       state.secondValue = null;
       state.operator = null;
-      state.screen = '0';
+      state.screen = 0;
     },
     calculate: (state) => {
       if (!state.operator || !state.firstValue || !state.secondValue) return;
