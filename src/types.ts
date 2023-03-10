@@ -9,3 +9,15 @@ export type modeT = typeof MODE_TYPES[number];
 
 export const CALCULATOR_PARTS = ['screen', 'operators', 'digits', 'equal',] as const;
 export type calculatorPartT = typeof CALCULATOR_PARTS[number];
+
+export const DnDItemTypes = {
+  result: 'result',
+  initial: 'initial',
+}
+
+export type DragItemType = 'result' | 'initial';
+
+export type DndItemT = {
+  data: calculatorPartT,
+  type: DragItemType,
+}
