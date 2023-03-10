@@ -4,13 +4,19 @@ import {ReactComponent as EyeIcon} from '../../assets/eye.svg';
 import {ReactComponent as SelectorIcon} from '../../assets/selector.svg';
 import {modeT, MODE_TYPES} from '../../types';
 import s from './ModeToggler.module.scss';
+import {useAppDispatch, useAppSelector} from '../../app/hooks';
+import {selectMode, setMode} from '../../features/constructCalc/constructCalcSlice';
+// export type ModeTogglerPropsT = {
+//   mode: modeT
+//   changeMode: (newMode: modeT) => void
+// }
 
-export type ModeTogglerPropsT = {
-  mode: modeT
-  changeMode: (newMode: modeT) => void
-}
+export const ModeToggler: FC = () => {
 
-export const ModeToggler: FC<ModeTogglerPropsT> = ({mode, changeMode}) => {
+  const dispatch = useAppDispatch();
+  const mode = useAppSelector(selectMode);
+  const changeMode = (newMode: modeT) => dispatch(setMode(newMode));
+
   return (
     <div className={s.toggler} >
       {MODE_TYPES.map((item) =>
