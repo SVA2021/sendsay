@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import {FC} from 'react';
+import {normalizeNumToString} from '../../utils';
 import s from './Screen.module.scss';
 
 export type ScreenPropsT = {
@@ -8,7 +9,7 @@ export type ScreenPropsT = {
 
 export const Screen: FC<ScreenPropsT> = ({value}) => {
 
-  const screenValue = value ? String(value) : '0';
+  const screenValue = normalizeNumToString(value);
 
   return (
     <div className={s.screen} >

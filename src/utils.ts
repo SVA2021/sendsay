@@ -25,22 +25,41 @@ export function getDigitName(sign: digitT): string {
   }
 }
 
-export function calculateResult(operator: operatorT, firstValue: string, secondValue: string): string {
-  let first = Number(firstValue);
-  let second = Number(secondValue);
+export function calculateResult(operator: operatorT, firstValue: string, secondValue: string): number | null | 'Не определено' {
+  let first = parseFloat(firstValue);
+  let second = parseFloat(secondValue);
   if (isNaN(first) || isNaN(second)) return 'Не определено';
 
   switch (operator) {
     case '+':
-      return String(first + second);
+      return first + second;
     case '-':
-      return String(first - second);
+      return first - second;
     case 'x':
-      return String(first * second);
+      return first * second;
     case '/':
-      return second === 0 ? 'Не определено' : String(first / second);
+      return second === 0
+        ? 'Не определено'
+        : first / second;
 
     default:
       return 'Не определено';
   }
+}
+
+export function addNumberToString(initial: string, newDigit: digitT): string {
+  return newDigit === ','
+    ? (~initial.indexOf(','))// prevent more than 1 comma in digit
+      ? initial
+      : initial + '.'
+    : initial + newDigit
+}
+
+export function normalizeNumToString(value: number | undefined | null | 'Не определено'): string {
+  if (!value) return '0';
+  if (value === 'Не определено' || isNaN(value)) return 'Не определено';
+
+  return String(value).length > 16 // 17 symbols - value from figma design
+    ? String(value.toPrecision(10)) 
+    : String(value)
 }
