@@ -4,7 +4,7 @@ import {ReactComponent as AddIcon} from '../../assets/add.svg';
 import classNames from 'classnames';
 
 export type PlaceholderProps = {
-  isOver: boolean
+  isOver?: boolean
 }
 
 export const Placeholder: FC<PlaceholderProps> = ({isOver}) => {
