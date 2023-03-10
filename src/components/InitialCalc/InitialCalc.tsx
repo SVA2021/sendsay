@@ -1,34 +1,33 @@
-import classNames from 'classnames';
-import React, {FC} from 'react';
+import {FC} from 'react';
 import {DigitsBlock, Equals, OperatorsBlock, Screen} from '..';
 import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import {moveToResult, selectInitialConstructor} from '../../features/calculator/calculatorSlice';
+import {moveToResult, selectInitialConstructor, selectMode} from '../../features/constructCalc/constructCalcSlice';
 import {calculatorPartT, CALCULATOR_PARTS} from '../../types';
-import s from './InitialCalc.module.scss';
+import {CalcDragItem} from '../CalcDragItem/CalcDragItem';
 
 export const InitialCalc: FC = () => {
 
-  const initialConstructor = useAppSelector(selectInitialConstructor);
   const dispatch = useAppDispatch();
+  const mode = useAppSelector(selectMode);
+  const initialConstructor = useAppSelector(selectInitialConstructor);
 
   const addToResult = (part: calculatorPartT) => dispatch(moveToResult(part));
+
+  if (mode === 'runtime') return <></>;
 
   return (
     <>
       {
         CALCULATOR_PARTS.map((item) =>
-          <div key={item}
-            className={classNames(
-              s.initial__item,
-              initialConstructor.includes(item) ? s.initial__item__active : s.initial__item__blocked,
-            )}
-            onDoubleClick={() => addToResult(item)}
+          <CalcDragItem key={item}
+            isActive={initialConstructor.includes(item)}
+            handleDrop={() => addToResult(item)}
           >
             {item === 'screen' && <Screen />}
             {item === 'digits' && <DigitsBlock />}
             {item === 'operators' && <OperatorsBlock />}
             {item === 'equal' && <Equals />}
-          </div>
+          </CalcDragItem>
         )
       }
     </>
