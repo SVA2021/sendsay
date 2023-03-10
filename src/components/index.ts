@@ -8,3 +8,5 @@ export * from './Placeholder/Placeholder';
 export * from './DigitsBlock/DigitsBlock';
 export * from './InitialCalc/InitialCalc';
 export * from './ResultCalc/ResultCalc';
+export * from './WorkCalc/WorkCalc';
+export * from './EditCalc/EditCalc';

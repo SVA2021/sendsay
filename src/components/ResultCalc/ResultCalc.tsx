@@ -1,41 +1,29 @@
-import classNames from 'classnames';
 import {FC} from 'react';
-import {DigitsBlock, Equals, OperatorsBlock, Screen} from '..';
-import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import {moveToInitial, selectMode, selectResultConstrustor} from '../../features/calculator/calculatorSlice';
-import {calculatorPartT, CALCULATOR_PARTS} from '../../types';
-import s from './ResultCalc.module.scss';
+import {useDrop} from 'react-dnd';
+import {EditCalc, Placeholder, WorkCalc} from '..';
+import {useAppSelector} from '../../app/hooks';
+import {selectMode, selectResultConstrustor} from '../../features/constructCalc/constructCalcSlice';
+import {DnDItemTypes} from '../../types';
 
 export const ResultCalc: FC = () => {
 
   const mode = useAppSelector(selectMode);
   const resultConstructor = useAppSelector(selectResultConstrustor);
-  const dispatch = useAppDispatch();
 
-  const delFromResult = (part: calculatorPartT) => {
-    if (mode === 'constructor') dispatch(moveToInitial(part));
-  };
+  const [{isOver}, drop] = useDrop(() => ({
+    accept: [DnDItemTypes.initial, DnDItemTypes.result],
+    collect: (monitor) => ({isOver: !!monitor.isOver(), }),
+  }))
 
   return (
-    <>
-      <div className={s.result__item}>
-        <Screen />
-      </div>
+    <div ref={drop} >
       {
-        CALCULATOR_PARTS.map((item) =>
-          <div key={item}
-            className={classNames(
-              s.result__item,
-              resultConstructor.includes(item) ? s.result__item__active : s.result__item__blocked,
-            )}
-            onDoubleClick={() => delFromResult(item)}
-          >
-            {item === 'digits' && <DigitsBlock />}
-            {item === 'operators' && <OperatorsBlock />}
-            {item === 'equal' && <Equals />}
-          </div>
-        )
+        resultConstructor.length > 0
+          ? mode === 'runtime'
+            ? <WorkCalc constructResult={resultConstructor} />
+            : <EditCalc constructResult={resultConstructor} />
+          : <Placeholder isOver={isOver} />
       }
-    </>
+    </div>
   );
 };
