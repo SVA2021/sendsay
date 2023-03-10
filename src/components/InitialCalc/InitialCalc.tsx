@@ -22,6 +22,7 @@ export const InitialCalc: FC = () => {
           <CalcDragItem key={item}
             isActive={initialConstructor.includes(item)}
             handleDrop={() => addToResult(item)}
+            part={item}
           >
             {item === 'screen' && <Screen />}
             {item === 'digits' && <DigitsBlock />}
