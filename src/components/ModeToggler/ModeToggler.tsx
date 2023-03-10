@@ -1,15 +1,11 @@
 import classNames from 'classnames';
 import {FC} from 'react';
+import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import {ReactComponent as EyeIcon} from '../../assets/eye.svg';
 import {ReactComponent as SelectorIcon} from '../../assets/selector.svg';
+import {selectMode, setMode} from '../../features/constructCalc/constructCalcSlice';
 import {modeT, MODE_TYPES} from '../../types';
 import s from './ModeToggler.module.scss';
-import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import {selectMode, setMode} from '../../features/constructCalc/constructCalcSlice';
-// export type ModeTogglerPropsT = {
-//   mode: modeT
-//   changeMode: (newMode: modeT) => void
-// }
 
 export const ModeToggler: FC = () => {
 
