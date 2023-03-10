@@ -1,17 +1,34 @@
 .screen {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 4px 8px;
+  position: relative;
+  height: 52px;
+  overflow: hidden;
   color: var(--screenValue);
   background: var(--screenBg);
   border-radius: 6px;
-  font-family: 'Inter';
-  font-style: normal;
+}
+
+.screen__data {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px 8px;
+  text-align: right;
   font-weight: 800;
+  text-overflow: ellipsis;
+}
+
+.screen__data__big {
   font-size: 36px;
   line-height: 44px;
-  text-align: right;
-  text-overflow: ellipsis;
-  overflow: hidden;
+}
+
+.screen__data__small {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+.screen__data__NaN {
+  font-size: 24px;
+  line-height: 29px;
 }

@@ -1,13 +1,27 @@
+import classNames from 'classnames';
 import {FC} from 'react';
-import {useAppSelector} from '../../app/hooks';
-import {selectScreen} from '../../features/calculator/calculatorSlice';
 import s from './Screen.module.scss';
 
-export const Screen: FC = () => {
-  const value = useAppSelector(selectScreen);
+export type ScreenPropsT = {
+  value?: number | null | 'Не определено'
+}
+
+export const Screen: FC<ScreenPropsT> = ({value}) => {
+
+  const screenValue = value ? String(value) : '0';
+
   return (
     <div className={s.screen} >
-      {value}
+      <span className={
+        classNames(
+          s.screen__data,
+          screenValue.length > 9 ? s.screen__data__small : s.screen__data__big,
+          screenValue === 'Не определено' && s.screen__data__NaN,
+        )
+      }
+      >
+        {screenValue}
+      </span>
     </div>
   );
 };
