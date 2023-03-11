@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../../app/store';
 import {operatorT} from '../../types';
-import {addNumberToString, calculateResult} from '../../utils';
+import {addCommaToNull, addNumberToString, calculateResult} from '../../utils';
 import {digitT} from "./../../types";
 
 export type CalculatorState = {
@@ -23,11 +23,11 @@ export const calculatorSlice = createSlice({
   initialState,
   reducers: {
     setFirstValue: (state, action: PayloadAction<digitT>) => {
-      state.firstValue = state.firstValue === null ? action.payload : addNumberToString(state.firstValue, action.payload);
+      state.firstValue = state.firstValue === null ? addCommaToNull(action.payload) : addNumberToString(state.firstValue, action.payload);
       state.screen = +state.firstValue;
     },
     setSecondValue: (state, action: PayloadAction<digitT>) => {
-      state.secondValue = state.secondValue === null ? action.payload : addNumberToString(state.secondValue, action.payload);
+      state.secondValue = state.secondValue === null ? addCommaToNull(action.payload) : addNumberToString(state.secondValue, action.payload);
       state.screen = +state.secondValue;
     },
     setOperator: (state, action: PayloadAction<operatorT | null>) => {
