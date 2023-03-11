@@ -10,3 +10,5 @@ export * from './InitialCalc/InitialCalc';
 export * from './ResultCalc/ResultCalc';
 export * from './WorkCalc/WorkCalc';
 export * from './EditCalc/EditCalc';
+export * from './CalcDropItem/CalcDropItem';
+export * from './CalcDragItem/CalcDragItem';
