@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   padding: 1px;
   height: 38px;
   background: var(--screenBg);
@@ -12,14 +11,13 @@
 .toggler__item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: var(--toggle);
   background-color: transparent;
   border-radius: 5px;
   padding: 8px 12px;
   text-transform: capitalize;
   border: 1px solid transparent;
-  font-family: 'Inter';
   font-weight: 500;
   font-size: 14px;
   line-height: 15px;
